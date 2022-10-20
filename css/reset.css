@@ -149,9 +149,9 @@ body {
 textarea,
 button,
 select {
-    -webkit-appearance: none;
+    /* -webkit-appearance: none;
     -moz-appearance: none;
-    appearance: none;
+    appearance: none; */
     margin: 0;
 }
 
