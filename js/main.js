@@ -35,3 +35,43 @@ $('button[type=submit]').on('click',function(e){
         e.preventDefault();
     }
 });
+
+//369 함수 ㄷㄷ;; 이런걸 하다니
+function _369Game(num) {
+    if(num % 3 === 0) {
+        console.log('박수')
+    } else {
+        console.log('통과')
+    }
+}
+
+function _369GameDouble(num) {
+    if(num % 9 === 0) {
+        console.log('9의 배수')
+    } else if (num % 3 === 0) {
+        console.log('박수')
+    } else {
+        console.log('통과')
+    }
+}
+
+function passTest(a,b) {
+    console.log(typeof(a))
+    if (typeof(a) !== 'number' ||  typeof(b) !== 'number' ){
+        console.log('숫자를 입력해라')
+    } else if( a < 40 || b < 40) {
+        console.log('불합격')
+    } else if (a + b < 120) {
+        console.log('불합격')
+    } else {
+        console.log('합격')
+    }
+}
+
+function upgrade369(num){
+    if(num % 10 == 3 || num % 10 == 6 || num % 10 == 9) {
+        console.log('박수')
+    } else {
+        console.log('패스')
+    }
+}
