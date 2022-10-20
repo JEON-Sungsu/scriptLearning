@@ -55,6 +55,7 @@ function _369GameDouble(num) {
     }
 }
 
+//매개변수의 타입체크 및 입력값의 조건에 따른 각각 함수 실행
 function passTest(a,b) {
     console.log(typeof(a))
     if (typeof(a) !== 'number' ||  typeof(b) !== 'number' ){
@@ -68,6 +69,7 @@ function passTest(a,b) {
     }
 }
 
+//파라미터의 마지막 숫자를 구하는 방법
 function upgrade369(num){
     if(num % 10 == 3 || num % 10 == 6 || num % 10 == 9) {
         console.log('박수')
@@ -75,3 +77,20 @@ function upgrade369(num){
         console.log('패스')
     }
 }
+
+
+//다크모드 만들기. 변수에 값을 저장해서 조건문에 사용 변수 선언,할당
+let clickTimes = 1;
+$('#darkMode').on('click',function(){
+    if(clickTimes % 2 == 0) {
+        $(this).text('Dark')
+        $('body').removeClass('dark')
+    } else {
+        $(this).text('Light')
+        $('body').addClass('dark')
+        console.log('홀수')
+    }
+
+    clickTimes += 1;
+})
+

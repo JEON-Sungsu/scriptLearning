@@ -39,3 +39,8 @@
     padding: 100px 20px;
     background: lightgray;
 }
+
+body.dark {
+    background: #000;
+    color: #fff;
+}
