@@ -44,3 +44,7 @@ body.dark {
     background: #000;
     color: #fff;
 }
+
+.alert.alert-danger.show {
+    display: block;
+}

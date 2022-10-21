@@ -48,3 +48,19 @@ onclick="document.getElementById('id').style.display = 'block';" 이런식으로
         ```
             let firstRefill =  100 * 2 / 3;
         ```
+
+<br><br>
+
+- setTimeout, setInterval, clearInterval
+    - setTimeout 은 화면이 로드되고, 지정해둔 시간이 지난 뒤 콜백함수 실행
+    - setInterval 은 화면 로드 후 지정된 초마다 함수 실행됨(반드시는 아니지만, 클리어인터벌 사용을 위해 셋인터벌은 변수에 담아서 사용해야 한다.)
+    - clearInterval 은 setInterval을 종료시키는 함수.
+    ```
+        const alertTimer = setInterval(function(){
+        saleCount.innerHTML -= 1;
+        if (saleCount.innerHTML == 0) {
+            clearInterval(alertTimer)
+            $('.alert.alert-danger').removeClass('show')
+            }
+        },1000)
+    ```

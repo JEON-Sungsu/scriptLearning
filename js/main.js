@@ -112,3 +112,30 @@ function refill(firstQtt) {
     let secondRefill = firstRefill * 2 / 3;
     console.log(firstQtt + firstRefill + secondRefill);
 }
+
+//간단 퀴즈 UI 사용자 입력값 체크해서 응답해주기 
+let submitCount = 0; 
+$('.submitQuiz').on('click',function(){
+    if ($('#answer').val() !== '1392' && submitCount >= 2) {
+        alert('한국인 맞음?')
+        submitCount = 0
+    } else if ($('#answer').val() !== '1392') {
+        alert('틀림 ㅉ')
+        submitCount += 1
+    } else if ($('#answer').val() == '1392') {
+        alert('정답')
+        submitCount = 0
+    }
+})
+
+//settimeOut, setInterval 사용법 
+let saleCount = document.querySelector('.count');
+saleCount.innerHTML = 5;
+
+const alertTimer = setInterval(function(){
+    saleCount.innerHTML -= 1;
+    if (saleCount.innerHTML == 0) {
+        clearInterval(alertTimer)
+        $('.alert.alert-danger').removeClass('show')
+    }
+},1000)
