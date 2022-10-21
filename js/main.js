@@ -34,6 +34,12 @@ $('button[type=submit]').on('click',function(e){
         alert('비밀번호를 6자리 이상 입력해주세요')
         e.preventDefault();
     }
+
+    const passWord = $('.form-control.pass').val();
+    if (passWord.length >= 6 && /[A-Z]/.test(passWord) == false) {
+        alert('비밀번호에 영문 대문자하나를 포함시키세요')
+        e.preventDefault();
+    }
 });
 
 //369 함수 ㄷㄷ;; 이런걸 하다니
@@ -139,3 +145,7 @@ const alertTimer = setInterval(function(){
         $('.alert.alert-danger').removeClass('show')
     }
 },1000)
+
+
+
+
