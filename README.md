@@ -42,3 +42,9 @@ onclick="document.getElementById('id').style.display = 'block';" 이런식으로
         - let : 재선언이 불가능하지만, 값을 재할당 할 수 있음
         - const : 재선언도 재할당도 불가
         - var : 둘다 가능(요즘은 잘 안씀 - 호이스팅 문제)
+
+    - 분수 계산할때
+        - 그냥... 일반 계산하듯이 하면 됨 100의 2/3를 구할때 
+        ```
+            let firstRefill =  100 * 2 / 3;
+        ```

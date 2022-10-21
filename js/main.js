@@ -94,3 +94,21 @@ $('#darkMode').on('click',function(){
     clickTimes += 1;
 })
 
+//조건에 따른 간단한 이자율 계산 (함수 파라미터와 변수 활용?)
+let percent;
+function calculateSave(cost) {
+    if (cost >= 60000) {
+        percent = 1.2
+    } else {
+        percent = 1.15
+    }
+
+    console.log(cost * percent * percent)
+}
+
+//분수 계산식
+function refill(firstQtt) {
+    let firstRefill =  firstQtt * 2 / 3;
+    let secondRefill = firstRefill * 2 / 3;
+    console.log(firstQtt + firstRefill + secondRefill);
+}
