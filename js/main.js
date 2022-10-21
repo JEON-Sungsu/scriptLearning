@@ -148,4 +148,39 @@ const alertTimer = setInterval(function(){
 
 
 
+//간단한 캐러셀 만들기
 
+let currentPicture = 0;
+$('.slide-2').on('click',function(){
+    $('.slide-container').css('transform','translateX(-100vw)')
+    currentPicture = 1;
+})
+
+$('.slide-3').on('click',function(){
+    $('.slide-container').css('transform','translateX(-200vw)')
+    currentPicture = 2;
+})
+
+$('.slide-1').on('click',function(){
+    $('.slide-container').css('transform','translateX(0)')
+    currentPicture = 0;
+})
+
+
+$('.next').on('click',function(e){
+    if (currentPicture >= $('.slide-container').children().length - 1) {
+        return   
+    }
+    currentPicture += 1;
+    console.log(currentPicture)
+    $('.slide-container').css('transform','translateX(-'+ currentPicture +'00vw)')
+})
+
+$('.prev').on('click',function(){
+    if (currentPicture < 1) {
+        return   
+    }
+    currentPicture -= 1;
+    console.log(currentPicture)
+    $('.slide-container').css('transform','translateX(-'+ currentPicture +'00vw)')
+})

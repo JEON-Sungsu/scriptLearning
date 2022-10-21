@@ -98,3 +98,22 @@ onclick="document.getElementById('id').style.display = 'block';" 이런식으로
         - /\S+@\S+\.\S+/ : 이메일 형식 검사 (플러스 기호는 한개만이 아니라 여러개 표시임)
 
     - 구글에 regex test 검색하면 정규식 테스트할 수 있는 페이지 많이 뜸 
+
+<br><br>
+
+- 간단한 캐러셀 만들기
+    - 특정 조건에서 현재 이벤트걸린 함수를 동작안하게 하려면 return 만 입력하면 됨. 
+    - 비슷하게 반복되는 코드의 재사용성을 높이려면 가변적인 수치에 데이터를 집어넣게끔 만들면 좋음. 
+    ```
+        $('.next').on('click',function(e){
+            if (currentPicture >= $('.slide-container').children().length - 1) {
+                return   
+            }
+            currentPicture += 1;
+            console.log(currentPicture)
+            $('.slide-container').css('transform','translateX(-'+ currentPicture +'00vw)')
+        })
+
+        클릭 횟수마다 css의 특정수치가 변경되도록 할 때, 앞자리에 데이터를 넣어서 변경되도록 처리
+
+    ```

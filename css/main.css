@@ -62,9 +62,3 @@ body.dark {
 .slide-box img {
     width: 100%;
 }
-
-.slide-container {
-    width: 300vw;
-    transition: all 1s;
-    transform: translateX(-100vw);
-}
