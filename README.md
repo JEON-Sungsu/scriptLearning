@@ -144,3 +144,30 @@ onclick="document.getElementById('id').style.display = 'block';" 이런식으로
     단 문자로 변환해줌. 그래서 오류가 생길 수 있으니깐 
     parseFloat(num), parseInt(num) 을 사용해서 int 로 변환시켜주고 추가 계산을 해야됨.
     ```
+
+<br><br>
+
+- scroll 이벤트
+    - window.scrollY = 유저가 스크롤을 맨 위에서부터 얼마나 했는지 
+    - window.scrollTo(x좌표, y좌표); = 내가 원하는 스크롤의 (전체 좌표중) 위치로 이동시켜줌 (하나 팁은 부트스트랩에서는 해당 매서드를 쓰게되면, 무조건 부드럽게 이동하는데 이를 막으려면 css 파일에 :root {scroll-behavior: auto} 값을 추가해주면 된다.)
+    - window.scrollBy(x좌표,y좌표) : 현재의 위치에서, 얼마만큼 (px) 이동시켜줘라
+
+    - 제이쿼리용
+    ```
+    $(window).scrollTop() = 현재 스크롤바 위치 출력. scrollY와 동일함. 단 파라미터에 Y 좌표값을 넣으면 해당 픽셀만큼 이동시켜줌. 
+
+    $(window).scrollHeight() = 스크롤을 하는 화면의 실제 높이값(실제 윈도우(요소)높이 + 스크롤 포함된 길이)
+
+    $(window).clientHeight() = 윈도우,요소의 눈에 보이는 높이. (스크롤포함이 아님)
+
+    scrollTop :는 스크롤을 내린양을 의미하지 실제 내가 스크롤한 window 또는 elements 의 높이를 의미하지 않는다. 그래서, 내가 원하는 화면(요소)에서 스크롤을 끝까지 했는지를 체크하려면 
+    스크롤바 내린 양 + 눈에 보이는 실제 높이 (scrollTop + clientHeight) 를 해줘야지 내가 원하는 영역의 스크롤을 끝까지 했는지 알 수 있다. 하지만 오차가 많이 나기 때문에, 여유를 두고 수치를 적어주는게 좋다. 예를들어 두개의 합한값이 200이면, 내가 이벤트를 걸려면 190이 되었을때 걸어주는식으로 실제값보다 조금더 여유있게 걸도록 하자
+    ```
+
+    ```
+    //스크롤 길이에 따른 프로그래스바 만들기
+    const windowHeight = document.querySelector('html').clientHeight;
+    const scrollLength = document.querySelector('html').scrollTop;
+    const heightPercent = Number(scrollLength / windowHeight * 100)
+    $('.progressBar').css('width', + heightPercent +'%')
+    ```

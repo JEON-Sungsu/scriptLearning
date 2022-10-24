@@ -207,3 +207,31 @@ console.log(calculatePrice(10, true))
 
 
 //스크롤 이벤트
+
+$(window).on('scroll', function(){
+    if (window.scrollY > 100) {
+        $('.navbar-brand').css('font-size','15px')
+    } else {
+        $('.navbar-brand').css('font-size','20px')
+    }
+
+    //스크롤 길이에 따른 프로그래스바 만들기
+    const windowHeight = document.querySelector('html').clientHeight;
+    const scrollLength = document.querySelector('html').scrollTop;
+    const heightPercent = Number(scrollLength / windowHeight * 100)
+    $('.progressBar').css('width', + heightPercent +'%')
+
+})
+
+$('.terms').on('scroll',function(){
+    const termsBox = document.querySelector('.terms');
+    
+    const boxHeight = termsBox.scrollHeight
+    const scrollHeight = termsBox.scrollTop + termsBox.clientHeight
+
+    if (scrollHeight >= boxHeight - 10) {
+        alert('스크롤 끝까지 완료')
+        $(this).off('scroll')
+    }
+})
+
