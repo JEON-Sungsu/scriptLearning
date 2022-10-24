@@ -172,7 +172,6 @@ $('.next').on('click',function(e){
         return   
     }
     currentPicture += 1;
-    console.log(currentPicture)
     $('.slide-container').css('transform','translateX(-'+ currentPicture +'00vw)')
 })
 
@@ -181,6 +180,30 @@ $('.prev').on('click',function(){
         return   
     }
     currentPicture -= 1;
-    console.log(currentPicture)
     $('.slide-container').css('transform','translateX(-'+ currentPicture +'00vw)')
 })
+
+//분초 -> MS단위 변환기
+function translation(min, sec) {
+    const minute = min * 60
+    const 합계 = minute + sec;
+    return 합계 * 1000;
+}
+
+console.log(translation(2,10))
+
+//가격 계산기 (10%할인 + 첫구매시 1.5달러 추가할인)
+function calculatePrice(price, first){
+   const discount = price - price * 0.1;
+   const firstOrNot = first;
+   if (firstOrNot == true) {
+        return (discount - 1.5).toFixed(1)
+   } else {
+        return discount
+   }
+}
+
+console.log(calculatePrice(10, true))
+
+
+//스크롤 이벤트

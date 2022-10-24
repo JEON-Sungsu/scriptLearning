@@ -24,6 +24,15 @@
         <div class="header"></div>
         <div class="contents">
             <div class="container-content">
+                <nav class="navbar navbar-light bg-light">
+                    <div class="container-fluid">
+                        <span class="navbar-brand">네비게이션</span>
+                        <span class="badge bg-dark ms-auto mx-3" id="darkMode">Dark</span>
+                        <button class="navbar-toggler" type="button">
+                            <span class="navbar-toggler-icon"></span>
+                        </button>
+                    </div>
+                </nav>
                 <button type="button" class="callAlert" onclick="alert('기본 얼럿 띄우기')">얼럿 띄우기</button>
                 <button type="button" class="callAlert" onclick="confirm('기본 컨펌 띄우기')">컨펌 띄우기</button>
 
@@ -31,15 +40,7 @@
                 <button type="button" onclick="textChange('잠와죽겠다')">텍스트 변경 1</button>
                 <button type="button" onclick="textChange('집에가고싶다')">텍스트 변경 2</button>
 
-                <nav class="navbar navbar-light bg-light">
-                    <div class="container-fluid">
-                        <span class="navbar-brand">Navbar</span>
-                        <span class="badge bg-dark ms-auto mx-3" id="darkMode">Dark</span>
-                        <button class="navbar-toggler" type="button">
-                            <span class="navbar-toggler-icon"></span>
-                        </button>
-                    </div>
-                </nav>
+
 
                 <ul class="list-group">
                     <li class="list-group-item">An item</li>
@@ -73,7 +74,7 @@
 
                 <div>
                     <h3>간단한 퀴즈 UI</h3>
-                    <p>조선 건국일은?</p>
+                    <p>조선 건국년도는?</p>
                     <input type="text" id="answer" />
                     <button type="button" class="submitQuiz">제출</button>
                 </div>
@@ -100,6 +101,8 @@
                 <button type="button" class="slide-2">2</button>
                 <button type="button" class="slide-3">3</button>
                 <button type="button" class="next">다음</button>
+
+                <div class="scroll" style="height:1000px;"></div>
             </div>
             <div class="footer"></div>
         </div>

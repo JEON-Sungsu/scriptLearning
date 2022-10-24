@@ -117,3 +117,30 @@ onclick="document.getElementById('id').style.display = 'block';" 이런식으로
         클릭 횟수마다 css의 특정수치가 변경되도록 할 때, 앞자리에 데이터를 넣어서 변경되도록 처리
 
     ```
+
+<br><br>
+
+- return 
+    - return 은 함수 종료의 의미도 지니고 있음.
+    - return 이후에 작성된 수식 또는 값들을 넘겨줌. 
+    ```
+     function test() {
+        return 1 + 1
+     }
+
+     const test2 = test() // 2 
+    ```
+
+<br><br>
+
+- 소수점 연산
+    - 소수점 연산할때 약간의 오차가 발생한다.(컴퓨터에서 2진법으로 변환 후 계산하기 때문)
+    - 정확한 연산을 위해서는 라이브러리를 쓰던지.. 반올림해서 써야된다. 
+    ```
+    const num = (a * 1.1).toFixed(2);
+    toFixed는 반올림 해주는 매서드이다.
+    파라미터는 몇번째 자리까지 반올림할것인지 지정해주는것.
+
+    단 문자로 변환해줌. 그래서 오류가 생길 수 있으니깐 
+    parseFloat(num), parseInt(num) 을 사용해서 int 로 변환시켜주고 추가 계산을 해야됨.
+    ```
