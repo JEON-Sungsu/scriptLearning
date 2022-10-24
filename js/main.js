@@ -238,3 +238,15 @@ $('.terms').on('scroll',function(){
     }
 })
 
+$('.white-bg').on('click',function(e){
+    e.stopPropagation()
+})
+
+
+$('.black-bg').on('click',function(e){
+    // if($(e.target).hasClass('black-bg')){
+    //     $(this).fadeOut();
+    // }
+
+    $(this).fadeOut();
+})

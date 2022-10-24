@@ -176,12 +176,55 @@ onclick="document.getElementById('id').style.display = 'block';" 이런식으로
 
 - for 반복문
     - 기본형 
-        ```
-        for (let i = 0; i < 3; i++) {
+    ```
+    for (let i = 0; i < 3; i++) {
 
+    }
+
+    for 반복문의 횟수에는, int 를 넣어도 되지만, 요소.length 와 같이 넣어도 무방하다. 개수가 가변적인, 동일한 클래스의 모든 요소에 이벤트를 걸고 싶으면 요소.length 로 사용성을 높이는게 좋다.
+
+    ```
+
+<br><br>
+
+- 이벤트 버블링
+    - 이벤트가 상위 요소로 번지는 현상.
+    ```
+    <div class="bg">
+        <div class="content"></div>
+    </div>
+
+    해당 요소가 있다고 가정할 때, 나는 bg 와 content 둘다에게 별개의 click 이벤트를 걸어두어서 개별적인 동작을 실행시키고 싶고, content에 걸려있는 이벤트를 실행하기 위해 content를 클릭하게 되면, 이 click 이벤트가 상위요소인 bg에도 적용이 되서, content,bg 둘다에게 걸려있는 이벤트가 실행되게 되버린다. 이러한 현상을 이벤트 버블링이라고 한다.
+
+    
+    ```
+    - 버블링을 막는것
+    ```
+    e.target; //유저가 실제 눌린것 가장 많이 씀.
+    e.currentTarget; //이벤트 리스너가 달려있는곳
+    e.preventDefault(); //submit 을 막아줘
+    e.stopPropagation(); //내 상위요소로 이벤트 버블링 막아줌
+
+    <div class="bg">
+        <div class="content"></div>
+    </div>
+
+    위 상황에서 버블링을 막으려면
+
+    $('.content').on('click',function(e){
+        e.stopPropagation()
+    })    
+
+    $('.bg').on('click',function(e){
+        //하위 요소에 e.stopPropagation을 쓰지 않았을 때 
+        if($(e.target).hasClass('bg')){
+            $(this).fadeOut()
         }
 
-        for 반복문의 횟수에는, int 를 넣어도 되지만, 요소.length 와 같이 넣어도 무방하다. 개수가 가변적인, 동일한 클래스의 모든 요소에 이벤트를 걸고 싶으면 요소.length 로 사용성을 높이는게 좋다.
+        //하위 요소에 e.stopPropagation을 적용 했을 때
+        $(this).fadeOut()
+    })
 
-        ```
+    이렇게 나눠 보면 될 것 같다.
 
+    ```
