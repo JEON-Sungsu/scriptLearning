@@ -228,3 +228,42 @@ onclick="document.getElementById('id').style.display = 'block';" 이런식으로
     이렇게 나눠 보면 될 것 같다.
 
     ```
+
+<br><br>
+
+- dataset
+    - html 태그에 data 를 삽입해둠
+    - data-내가원하는이름="값" html 태그 내에 이렇게 넣어주면 됨.
+    ```<div data-name="바보"></div>```
+    - data 를 뽑아오려면 선택자.dataset.데이터이름 이렇게 하면 됨
+    ```$('div').dataset.name```
+    - jquery 에서는 선택자.data('데이터이름','값') 이렇게 쓰면 된다.
+
+<br><br>
+
+- 배열, 객체 
+    - 배열 출력 = arr[index]
+    - 배열 변경 = arr[index] = 변경하고싶은값
+    - 객체 출력 = obj.key
+    - 객체 변경 = obj.key = 변경하고싶은값
+
+    - 객체는 배열과 다르게 순서개념이 없음. 그래서 배열은 정렬이 가능함 (arr.sort();)
+    - 배열은 중간에 자르기도 가능 arr.slice(index,index);
+
+    - 객체 데이터 뽑는법
+    ```
+    obj.key
+    obj["key"]
+
+    두가지 다 키값 입력으로 데이터를 뽑지만, 대괄호로 뽑는다면 변수명을 집어넣을 수 있음.
+    ```
+    - 객체 내 배열값 뽑기
+    ```
+    const obj = {
+        name = "howard"
+        price = [50000, 3000, 4000],
+    }
+
+    console.log(obj.price[index]);
+    이렇게 뽑으면 됨.
+    ```
