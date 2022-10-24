@@ -216,11 +216,14 @@ $(window).on('scroll', function(){
     }
 
     //스크롤 길이에 따른 프로그래스바 만들기
-    const windowHeight = document.querySelector('html').clientHeight;
-    const scrollLength = document.querySelector('html').scrollTop;
-    const heightPercent = Number(scrollLength / windowHeight * 100)
-    $('.progressBar').css('width', + heightPercent +'%')
+    const windowHeight = document.querySelector('html').clientHeight; //보여지는 화면 높이
+    const scrollLength = document.querySelector('html').scrollTop; //스크롤 된 길이
 
+    const heightPercent = Number(scrollLength / windowHeight * 100) //스크롤 길이를 퍼센트로 변환
+
+    $('.progressBar').css('width', + heightPercent +'%') //프로그래스바 위드값에 퍼센트 넣기
+    //특정 요소였다면, clientHeight + scrollTop / scrollHeight * 100 으로 가야되지만, 이 경우에는 html이 선택자라,
+    //clientHeight 가 문서 전체 높이와 동일해진것.
 })
 
 $('.terms').on('scroll',function(){

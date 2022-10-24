@@ -158,7 +158,7 @@ onclick="document.getElementById('id').style.display = 'block';" 이런식으로
 
     $(window).scrollHeight() = 스크롤을 하는 화면의 실제 높이값(실제 윈도우(요소)높이 + 스크롤 포함된 길이)
 
-    $(window).clientHeight() = 윈도우,요소의 눈에 보이는 높이. (스크롤포함이 아님)
+    $(window).clientHeight() = 윈도우,요소의 눈에 보이는 높이. (스크롤포함이 아님 뷰포트를 말하는거 아님. 그 요소의 실제 높이를 의미함. 예를들어 선택자를 html 이나 window 를 해버리면, 문서 전체의 height 값이 되어버리는 것임. 주의할것)
 
     scrollTop :는 스크롤을 내린양을 의미하지 실제 내가 스크롤한 window 또는 elements 의 높이를 의미하지 않는다. 그래서, 내가 원하는 화면(요소)에서 스크롤을 끝까지 했는지를 체크하려면 
     스크롤바 내린 양 + 눈에 보이는 실제 높이 (scrollTop + clientHeight) 를 해줘야지 내가 원하는 영역의 스크롤을 끝까지 했는지 알 수 있다. 하지만 오차가 많이 나기 때문에, 여유를 두고 수치를 적어주는게 좋다. 예를들어 두개의 합한값이 200이면, 내가 이벤트를 걸려면 190이 되었을때 걸어주는식으로 실제값보다 조금더 여유있게 걸도록 하자
@@ -171,3 +171,17 @@ onclick="document.getElementById('id').style.display = 'block';" 이런식으로
     const heightPercent = Number(scrollLength / windowHeight * 100)
     $('.progressBar').css('width', + heightPercent +'%')
     ```
+
+<br><br>
+
+- for 반복문
+    - 기본형 
+        ```
+        for (let i = 0; i < 3; i++) {
+
+        }
+
+        for 반복문의 횟수에는, int 를 넣어도 되지만, 요소.length 와 같이 넣어도 무방하다. 개수가 가변적인, 동일한 클래스의 모든 요소에 이벤트를 걸고 싶으면 요소.length 로 사용성을 높이는게 좋다.
+
+        ```
+
