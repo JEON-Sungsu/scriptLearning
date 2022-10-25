@@ -22,14 +22,21 @@ function tabOpen(number) {
     $('.tab-content').eq(number).addClass('show')
 }
 
+const shirts = [95, 100, 105, 110]
+const pants = [28, 30, 32];
+
 $('#productsMenu').on('change',function(){
     let selectOpt = '';
 
     if($(this).val() == '셔츠') {
-        selectOpt = `<option>95</option><option>100</option><option>105</option>`
+        shirts.forEach(function(el){
+            selectOpt += `<option>${el}</option>`
+        })
         $('#productsMenuOption').css('display','block')
     } else if($(this).val() == '바지') {
-        selectOpt = `<option>30</option><option>31</option>`
+        pants.forEach(function(el, index){
+            selectOpt += `<option>${el}</option>`
+        })
         $('#productsMenuOption').css('display','block')
         
     } else {

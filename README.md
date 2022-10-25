@@ -268,6 +268,23 @@ onclick="document.getElementById('id').style.display = 'block';" 이런식으로
     이렇게 뽑으면 됨.
     ```
 
+    - 배열 반복문 = forEach
+    - 객채 반복문 = for in = 객체의 데이터 수만큼 반복함. 
+    ```
+    obj = {
+        name : "kim",
+        age : 34,
+        gender : "male"
+    }
+
+    for (let key in obj) {
+        블라블라
+    }
+
+    for in 문에서 변수 key 는 객체데이터 내의 key 값을 의미한다.
+    저기서 console.log(key) 를 찍어보면 //name, age, gender 가 출력된다.
+    ```
+
 <br><br>
 
 - 폼태그 관련
@@ -305,3 +322,46 @@ onclick="document.getElementById('id').style.display = 'block';" 이런식으로
 
     보통 개발할때 부모태그를 empty() 로 비운다음에 append() 로 붙이는데, 그냥 innerHTML (바닐라) html(jquery)를 쓰면 굳이 엠티는 안써도 되지 않을까? 
     ```
+
+<br><br>
+
+- arrow function
+    - 함수를 간단하게 표현하는 애로우 펑션
+    - 일반 함수와 차이점은 this 를 사용할때인데, 에로우 펑션에서 this 는 밖에 있는 이상한 값을 
+    가져다 씀으로, 에로우 펑션에서 this 는 사용하지 않는게 좋음.
+
+<br><br>
+
+- 반복문 중간 종료 하는법
+    - forEach
+        - forEach는 중간에 원하는 행위를 완료했을때 종료시키는게 없다. 그래서 에러를 일부러 발생시켜서 종료시켜야 한다.
+        ```
+         const arr = ['Howard','Toni', 'Thor', 'Legend']
+
+        function findName(name){
+            arr.forEach(function(el){
+                if (el == name) {
+                    console.log('찾음');
+                    throw new Error("찾아서 종료"); //강제로 에러 발생시켜서 중단하기
+                }
+
+                if (el == 'Legend') {
+                    console.log('last')
+                }
+
+            })
+
+            for(let i = 0; i < arr.length; i++) {
+                    console.log(arr[i]);
+                    if(arr[i] == name) {
+                        return false;
+                    }
+
+            }
+        }
+        ```
+
+    - 일반 for 문
+        - 일반 for 문에서는 return false 값을 주면 중간에 중단함
+    - jquery each 문
+        - each 문도 일반 for 문과 마찬가지로 return false 값을주면 중간에 중단함
