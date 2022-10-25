@@ -21,3 +21,20 @@ function tabOpen(number) {
     $('.tab-content').removeClass('show')
     $('.tab-content').eq(number).addClass('show')
 }
+
+$('#productsMenu').on('change',function(){
+    let selectOpt = '';
+
+    if($(this).val() == '셔츠') {
+        selectOpt = `<option>95</option><option>100</option><option>105</option>`
+        $('#productsMenuOption').css('display','block')
+    } else if($(this).val() == '바지') {
+        selectOpt = `<option>30</option><option>31</option>`
+        $('#productsMenuOption').css('display','block')
+        
+    } else {
+        $('#productsMenuOption').css('display','none');
+    }
+
+    $('#productsMenuOption').html(selectOpt)
+})

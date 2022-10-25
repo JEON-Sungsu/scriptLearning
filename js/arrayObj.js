@@ -10,5 +10,8 @@ var products = [
     const cardTitle = el.children[0];
     const cardPrice = el.children[1];
     cardTitle.innerHTML = products[index].title;
-    cardPrice.innerHTML = products[index].price;
+    cardPrice.innerHTML = '가격 : ' +  products[index].price;
   })
+
+
+  

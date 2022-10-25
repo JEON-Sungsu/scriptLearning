@@ -267,3 +267,41 @@ onclick="document.getElementById('id').style.display = 'block';" 이런식으로
     console.log(obj.price[index]);
     이렇게 뽑으면 됨.
     ```
+
+<br><br>
+
+- 폼태그 관련
+    - 폼태그에 사용되는것들(인풋,셀렉트,기타등등)의 값들이 변하는 이벤트는 change 이다. 
+    - 유저가 선택한 값을 가져오려면 
+    ```
+    $('선택자').val()  (제이쿼리)
+    선택자.value (바닐라스크립트)
+    ```
+
+<br><br>
+
+- 자바스크립트로 html 그리기
+    - 방법 1
+    ```
+    const pTag = document.createElement('p');
+    pTag.innerHtml = 'P 태그 안에 넣고 싶은 내용'
+    document.querySelector('.test').appendChild(pTag);
+
+    1. 태그를 생성하고
+    2. 태그안에 내가 넣고자하는 내용 집어넣고
+    3. 생성한 태그를 넣고싶은 위치에 appendChild(생성한태그) 로 넣어준다.
+    ```
+    - 방법 2
+    ```
+    const html = '<p>하이<p>'
+    document.querySelector('.test').insertAdjacentHTML('beforeend', html);
+
+    1. 변수안에 만들고자하는 태그를 텍스트로 담는다.
+    2. 변수에 담긴 태그를 넣고자 하는 위치를 선택자로 잡고 insertAdjacentHTML을 통해서 집어넣는다.
+
+    jquery 에서는 간단한게 $('넣을위치선택자').append(html)로 하면 된다.
+
+    만든 태그를 붙여넣는게 아니고 아에 싹 갈아 엎으려면 innerHTML 을 쓰면 된다.
+
+    보통 개발할때 부모태그를 empty() 로 비운다음에 append() 로 붙이는데, 그냥 innerHTML (바닐라) html(jquery)를 쓰면 굳이 엠티는 안써도 되지 않을까? 
+    ```
