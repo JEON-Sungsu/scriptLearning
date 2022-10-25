@@ -4,14 +4,17 @@ var products = [
     { id : 2, price : 60000, title : 'Black Monastery' }
   ];
 
-  const cardContent = document.querySelectorAll('.card-body');
-
-  cardContent.forEach(function(el, index) {
-    const cardTitle = el.children[0];
-    const cardPrice = el.children[1];
-    cardTitle.innerHTML = products[index].title;
-    cardPrice.innerHTML = '가격 : ' +  products[index].price;
-  })
+$(document).ready(function(){
+    let cardItem = '';
+    $(products).each(function(index,item){
+        cardItem = `<div class="col-sm-4">
+                        <img src="https://via.placeholder.com/600" class="w-100">
+                        <h5>${item.title}</h5>
+                        <p>가격 : ${item.price}</p>
+                    </div>`
+        $('#itemContainer').append(cardItem);
+    })
+})
 
 
   //배열에서 자료 찾아내기.
@@ -34,16 +37,16 @@ var products = [
 //    }
 }
 
-findName('Thor')
+// findName('Thor')
 
 //구구단 만들기
-const arr99 = [2,3,4,5,6,7,8,9];
+// const arr99 = [2,3,4,5,6,7,8,9];
 
-for (let i = 0; i < arr99.length; i++){
-    for (let item = 2; item < 10; item++){
-        console.log(item * arr99[i]);
-    }
-}
+// for (let i = 0; i < arr99.length; i++){
+//     for (let item = 2; item < 10; item++){
+//         console.log(item * arr99[i]);
+//     }
+// }
 
 //평균점수 구하는 계산기 만들기
 
@@ -68,4 +71,14 @@ function sumScore(before, now){
     }
 }
 
-sumScore([10,20,30,40,50], 40);
+// sumScore([10,20,30,40,50], 40);
+
+//ajax 사용하기
+
+// $.get('https://codingapple1.github.io/price.json')
+// .done(function(data){
+//     console.log(data.price);
+// })
+// .fail(function(){
+//     alert('에러')
+// })

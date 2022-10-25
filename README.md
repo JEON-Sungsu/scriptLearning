@@ -365,3 +365,70 @@ onclick="document.getElementById('id').style.display = 'block';" 이런식으로
         - 일반 for 문에서는 return false 값을 주면 중간에 중단함
     - jquery each 문
         - each 문도 일반 for 문과 마찬가지로 return false 값을주면 중간에 중단함
+
+
+<br><br>
+
+- ajax 통신 방법
+    - 서버에 요청을 할때는, 데이터의 url, 방식(post,get)을 잘 정의해서 요청해야된다.
+    - 데이터 url = 어떤 데이터인지 (서버 개발자한테 물어보면 됨. 내가 이러이러한 데이터를 얻고 싶은데 어떤 url 로 요청해야되나요~? 그리고 이걸 정리해둔게 Api 문서임. Api 문서에는 a 라는 url로 get 메소드를 사용하여 요청하면 a 라는 정보를 줄게~ 와 같이 정리가 되어 있음)
+    - 어떤 메소드 = POST,GET 
+        - GET = 데이터를 읽고싶을 때
+        ```
+        GET 요청 방식
+        ex) 브라우저 url 입력창
+        ```
+        - POST = 데이터를 보내고싶을 때 
+        ```
+        POST 요청 방식
+        <form action="url" method="post">
+        </form>
+
+        댓글 입력, 게시판글남기기 등등... 
+        ```
+
+    - GET, POST 등과 같이 요청하면 브라우저가 새로고침이 된다. 그래서 새로고침 없이, GET,POST 요청을 하기 위해서 사용하는 방식이 ajax 통신 방법이다. 
+        -   
+    ```
+    $.get('url')
+    .done(function(data){
+        console.log(data)
+    })
+    .fail(function(){
+        alert('통신실패')
+    })
+
+    $.post('url', {내가보내고자하는 데이터})
+    .done(function(data){
+
+    })
+    .fail(function(){
+        alert('통신실패')
+    })
+
+    - post 요청은 두번째 파라미터로 내가 보내고자 하는 데이터를 넣어주면 된다.
+    - .done 메소드는 통신이 성공했을때 실행시킬 내용을 입력해주면 된다.
+    - .done 메소드의 콜백함수의 파라미터는, 서버로부터 받아오는 데이터가 자동으로 들어간다. 
+    ```
+
+    - 바닐라 자바스크립트로 ajax 요청하는법
+    ```
+    fetch('url')
+    .then(rese => res.json()) //json 파일을(문자) object 나 array로 변환해주기 위해 해당 코드를 씀
+    .then(data => {
+        console.log(data)
+    })
+    .catch(error => {
+        console.log(error)
+    })
+
+    then 이 done, catch 가 fail이다. 
+    참고로 말하자면
+    서버와 유저간 통신에는 문자자료만 주고 받을 수 있다. array나 object를 주고받을 수 없음. 그래서 배열이나 객체를 보내고 싶을때는 "[배열]", "{객체 : 밸류}" 이런식으로 배열, 객체를 따옴표로 감싸서 보내야 되는데, 이걸 자동으로 만들어주는게 json 파일이다. 그 말은 json 파일은 문자로만 표현되어있다는 말이다.
+    바닐라에서는 .then(resp => resp.json()) 과 같이 json 을 변환해줘야 하지만, jquery 에서는 json 을 자동으로 알아서 object 나 array로 변환시켜줘서 굳이 사용할 필요가 없다.
+
+    ```
+
+    - axios 라는 라이브러리가 있는데, 뷰나 리액트에서 많이 쓰는 ajax를 편하게 사용 할 수 있게 해주는 라이브러리다.
+    
+    
