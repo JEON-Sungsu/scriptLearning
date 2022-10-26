@@ -24,12 +24,14 @@ $(document).ready(function(){
         $.get(callUrl)
         .done(function(data){
             $(data).each(function(index,item){
-                cardMaker(item);
+                cardMaker(item);  
             })
         })
         .fail(function(){
             alert('정보가져오기 실패')
         })
+
+        
     })
 
     
@@ -84,9 +86,34 @@ $(document).ready(function(){
                 $('#itemContainer').append(cardItemMore);
     }
 
-    
-})
+    $(".buy").on('click' ,function(){
+        const getProductName = $(this).siblings('h5').text();
+        const obj = {
+            title : getProductName,
+            Qtt : 1,
+        };
 
+        if (localStorage.getItem('cart') != null) {
+            let getStorage = JSON.parse(localStorage.getItem('cart'));
+            $(getStorage).each(function(index, item){
+                if(item.title == getProductName) {
+                    item.Qtt++ 
+                }
+            })
+
+            let sameFilter = getStorage.filter(it => it.title.includes(getProductName));
+            if (sameFilter.length == 0) {
+                getStorage.push(obj);
+            }
+
+            localStorage.setItem('cart', JSON.stringify(getStorage));
+        } else {
+            localStorage.setItem('cart',JSON.stringify([obj]));
+        }
+    })
+
+})
+// let removeSame = [...new Set(getStorage)];
 
   //배열에서 자료 찾아내기.
 

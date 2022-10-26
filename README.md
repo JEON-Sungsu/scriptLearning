@@ -493,6 +493,7 @@ onclick="document.getElementById('id').style.display = 'block';" 이런식으로
         - 총 용량은 5MB 이다
         - 문자/숫자만 저장 할 수 있다.
         - 세션과 로컬스토리지 차이는, 세션스토리지는 브라우저를 재시작하면 데이터가 사라지고, 로컬스토리지는 계속 남아있다.(유저가 브라우저를 청소하지 않는 이상)
+        - 세션 스토리지를 쓰려면, localStorage 자리에 sessionStorage 로 변경해주면 됨.
     - indexedDb : 대용량 무언가를 저장하는데 복잡한 방식임
     - Cookies : 주로 로그인 정보 같은것을 저장하는 장소
     - Cache Storage : html , css 파일을 저장해둔곳.
@@ -503,3 +504,44 @@ onclick="document.getElementById('id').style.display = 'block';" 이런식으로
         localStorage.getItem('key') //저장해둔 데이터 뽑아오기
         localStorage.removeItem('key') //저장해둔 데이터 삭제하기
         ```
+
+    - 로컬스토리지에 강제로 배열, 객체 넣는법
+        - arr/obj 를 JSON 으로 변경해서 저장하면 된다.
+        ```
+        const arr = [1,2,3]
+        const jsonArr = JSON.stringify(arr); //배열을 JSON 으로 변환
+
+        localStorage.setItem('num', jsonArr);
+        const getData = localStorage.getItem('num'); //저장한 JSON 파일을 변수에 담고
+
+        JSON.parse(getData) //다시 배열로 변경해줌
+        ```
+
+        - 간단하게 배열 넣는 법
+        ```
+        const arr = [1,2,3]
+        localStorage.setItem('key',JSON.stringify(arr))
+        ```
+
+    - 로컬스토리지 데이터 수정하기
+        1. 로컬스토리지에 저장된 데이터는 바로 직접 수정이 불가능하다.
+        2. 로컬스토리지에 저장된 데이터를 수정하기 위해서는
+            1. 데이터를 다시 뽑아온다.
+            2. 뽑아온 데이터를 배열로 변경해준다.
+            3. 배열로 변경된 데이터를 수정한다(추가,삭제,변경 등등)
+            4. 수정한 배열을 다시 setItem에 저장해준다. 
+            ```
+            if (localStorage.getItem('cart') != null) {
+            let getStorage = JSON.parse(localStorage.getItem('cart'));
+            getStorage.push(getProductName);
+
+            let removeSame = [...new Set(getStorage)];
+
+            localStorage.setItem('cart', JSON.stringify(removeSame));
+            } else {
+                localStorage.setItem('cart',JSON.stringify([getProductName]));
+            }
+
+            첫번째 조건문. cart로 저장된 데이터가 빈값이 아니면(데이터가 있으면)~ 블라블라
+            두번째 cart로 저장된 데이터가 없으면 추가해줘~
+            ```
