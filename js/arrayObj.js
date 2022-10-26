@@ -5,14 +5,8 @@ var products = [
   ];
 
 $(document).ready(function(){
-    let cardItem = '';
     $(products).each(function(index,item){
-        cardItem = `<div class="col-sm-4">
-                        <img src="https://via.placeholder.com/600" class="w-100">
-                        <h5>${item.title}</h5>
-                        <p>가격 : ${item.price}</p>
-                    </div>`
-        $('#itemContainer').append(cardItem);
+        cardMaker(item);
     })
 
     let clickCount = 1;
@@ -30,18 +24,67 @@ $(document).ready(function(){
         $.get(callUrl)
         .done(function(data){
             $(data).each(function(index,item){
-               const cardItemMore = `<div class="col-sm-4">
-                                <img src="https://via.placeholder.com/600" class="w-100">
-                                <h5>${item.title}</h5>
-                                <p>가격 : ${item.price}</p>
-                            </div>`
-                $('#itemContainer').append(cardItemMore);
+                cardMaker(item);
             })
         })
         .fail(function(){
             alert('정보가져오기 실패')
         })
     })
+
+    
+    //가격순 정렬
+    $('#sorting').on('click',function(){
+        products.sort(function(a ,b){
+            return a.price - b.price;
+        })
+
+        $('#itemContainer').empty();
+
+        $(products).each(function(index,item){
+            cardMaker(item);
+        })
+    })
+
+    //가나다순 정렬
+    $('#sorting2').on('click',function(){
+        products.sort(function(a ,b){
+            if (a.title > b.title) return -1;
+            else if (b.title > a.title) return 1;
+            else return 0;
+        })
+
+        $('#itemContainer').empty();
+
+        $(products).each(function(index,item){
+            cardMaker(item);
+        })
+    })
+
+    //6만원 이하 상품만 보기
+    $('#sorting3').on('click',function(){
+        const filteringList = products.filter(function(a){
+            return a.price < 60000;
+        })
+
+        $('#itemContainer').empty();
+
+        $(filteringList).each(function(index,item){
+            cardMaker(item);
+        })
+    })
+
+    function cardMaker(list) {
+        const cardItemMore = `<div class="col-sm-4" style="margin-bottom:20px;">
+                                <img src="https://via.placeholder.com/600" class="w-100">
+                                <h5>${list.title}</h5>
+                                <p>가격 : ${list.price}</p>
+                                <button type="button" class="btn btn-secondary buy">구매</button>
+                            </div>`
+                $('#itemContainer').append(cardItemMore);
+    }
+
+    
 })
 
 

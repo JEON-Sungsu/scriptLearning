@@ -388,7 +388,7 @@ onclick="document.getElementById('id').style.display = 'block';" 이런식으로
         ```
 
     - GET, POST 등과 같이 요청하면 브라우저가 새로고침이 된다. 그래서 새로고침 없이, GET,POST 요청을 하기 위해서 사용하는 방식이 ajax 통신 방법이다. 
-        -   
+  
     ```
     $.get('url')
     .done(function(data){
@@ -431,3 +431,75 @@ onclick="document.getElementById('id').style.display = 'block';" 이런식으로
 
     - axios 라는 라이브러리가 있는데, 뷰나 리액트에서 많이 쓰는 ajax를 편하게 사용 할 수 있게 해주는 라이브러리다.
         
+
+<br><br>
+
+- 목록 정렬 
+    - array 정렬하기
+    1. sort 함수
+        ```
+        var arr = [1,3,5,6,2,8,9]
+        arr.sort();
+        
+        그냥 sort를 쓰면 문자순으로 정렬해줌 ㄱㄴㄷ순
+
+        arr.sort(function(a,b) {
+            return a - b //오름차순(작은것부터 큰거)
+            return b - a //내림차순(큰것부터 작은것)
+        })
+
+        숫자정렬
+
+        sort 콜백함수의 파라미터는 배열 안의 자료임.
+        return 에 남는 값이, 양수면 a 를 우측으로
+        음수면 b 를 우측으로 보내줌 (a - b = 음수 or 양수)
+        ```
+    - array 안에 object 정렬하기 
+        ```
+         products.sort(function(a ,b){
+            return a.price - b.price;
+        })
+
+        배열안에 객체가 있고, 객체 내부의 값들 중, 비교하고싶은 데이터의 key값을 뽑아서 위 처럼 정렬해주면 된다. 
+        ```
+
+    2. filter 함수: array 자료 중, 원하는 데이터만 뽑아주는 함수
+        ```
+        const newArr = arr.filter(function(a){
+                            return 조건식(어떤 자료를 남길것인지를)
+                            return a < 4 (4이하의 자료만 남기겠다.)
+                        })
+
+        a 는 동일하게 배열 안 데이터를 의미함.
+        filter 는 기존의 arr 을 변화시켜주는게 아니고, 기존 arr 에서 조건에 해당하는 값을 뽑아와서 새로운 arr 을 생성해서 넣어줘야 하기때문에 변수에 담아서 사용해야한다.
+        ```
+
+    3. map 함수 : array 자료 전부를 변경할때 사용
+        ```
+        arr.map(function(a){
+            return a * 4 //모든 데이터에 4를 곱해줌. 
+        })
+
+        사용 예시 예를들어 글로벌 마켓사이트에서, 가격을 원화,미화 등등으로 변경시켜야 할 때, 모든 가격에 거시기만 추가해주면 뭐 .. 
+        ```
+
+<br><br>
+
+- 로컬 스토리지(localStorage)
+    - 유저가 선택한 데이터를, 서버가 아닌 유저의 브라우저에 저장할 수 있는 공간
+    - 반 영구적으로 저장 할 수 있다.
+    - 위치 : 브라우저 개발자 도구 > Application 탭 > Local Storage
+    - Local Storage, Session Storage 는 객체처럼 key: value 값 형태로 저장 가능
+        - 총 용량은 5MB 이다
+        - 문자/숫자만 저장 할 수 있다.
+        - 세션과 로컬스토리지 차이는, 세션스토리지는 브라우저를 재시작하면 데이터가 사라지고, 로컬스토리지는 계속 남아있다.(유저가 브라우저를 청소하지 않는 이상)
+    - indexedDb : 대용량 무언가를 저장하는데 복잡한 방식임
+    - Cookies : 주로 로그인 정보 같은것을 저장하는 장소
+    - Cache Storage : html , css 파일을 저장해둔곳.
+    <br><br>
+    - 로컬스토리지 사용하는법
+        ```
+        localStorage.setItem('key','value') //로컬스토리지에 저장하기
+        localStorage.getItem('key') //저장해둔 데이터 뽑아오기
+        localStorage.removeItem('key') //저장해둔 데이터 삭제하기
+        ```
