@@ -430,5 +430,4 @@ onclick="document.getElementById('id').style.display = 'block';" 이런식으로
     ```
 
     - axios 라는 라이브러리가 있는데, 뷰나 리액트에서 많이 쓰는 ajax를 편하게 사용 할 수 있게 해주는 라이브러리다.
-    
-    
+        

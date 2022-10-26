@@ -14,6 +14,34 @@ $(document).ready(function(){
                     </div>`
         $('#itemContainer').append(cardItem);
     })
+
+    let clickCount = 1;
+    $('#more').click(function(){
+        let callUrl = '';
+        if (clickCount == 1) {
+            callUrl =  'https://codingapple1.github.io/js/more1.json';
+            clickCount++
+        } else if (clickCount == 2) {
+            callUrl = 'https://codingapple1.github.io/js/more2.json'
+            clickCount = 1;
+            $(this).css('display','none')
+        }
+
+        $.get(callUrl)
+        .done(function(data){
+            $(data).each(function(index,item){
+               const cardItemMore = `<div class="col-sm-4">
+                                <img src="https://via.placeholder.com/600" class="w-100">
+                                <h5>${item.title}</h5>
+                                <p>가격 : ${item.price}</p>
+                            </div>`
+                $('#itemContainer').append(cardItemMore);
+            })
+        })
+        .fail(function(){
+            alert('정보가져오기 실패')
+        })
+    })
 })
 
 
