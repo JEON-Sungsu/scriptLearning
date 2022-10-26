@@ -30,8 +30,6 @@ $(document).ready(function(){
         .fail(function(){
             alert('정보가져오기 실패')
         })
-
-        
     })
 
     
@@ -75,44 +73,44 @@ $(document).ready(function(){
             cardMaker(item);
         })
     })
+})
 
-    function cardMaker(list) {
-        const cardItemMore = `<div class="col-sm-4" style="margin-bottom:20px;">
-                                <img src="https://via.placeholder.com/600" class="w-100">
-                                <h5>${list.title}</h5>
-                                <p>가격 : ${list.price}</p>
-                                <button type="button" class="btn btn-secondary buy">구매</button>
-                            </div>`
-                $('#itemContainer').append(cardItemMore);
+function cardMaker(list) {
+    const cardItemMore = `<div class="col-sm-4" style="margin-bottom:20px;">
+                            <img src="https://via.placeholder.com/600" class="w-100">
+                            <h5>${list.title}</h5>
+                            <p>가격 : ${list.price}</p>
+                            <button type="button" class="btn btn-secondary buy" onclick="saveLocal(this)">구매</button>
+                        </div>`
+    $('#itemContainer').append(cardItemMore);
+}
+
+function saveLocal(btn){
+    const getProductName = $(btn).siblings('h5').text();
+    const obj = {
+        title : getProductName,
+        Qtt : 1,
+    };
+
+    if (localStorage.getItem('cart') != null) {
+        let getStorage = JSON.parse(localStorage.getItem('cart'));
+        $(getStorage).each(function(index, item){
+            if(item.title == getProductName) {
+                item.Qtt++               
+            }
+        })
+
+    let sameFilter = getStorage.filter(it => it.title.includes(getProductName));
+    if (sameFilter.length == 0) {
+        getStorage.push(obj);
     }
 
-    $(".buy").on('click' ,function(){
-        const getProductName = $(this).siblings('h5').text();
-        const obj = {
-            title : getProductName,
-            Qtt : 1,
-        };
+        localStorage.setItem('cart', JSON.stringify(getStorage));
+    } else {
+        localStorage.setItem('cart',JSON.stringify([obj]));
+    }
+}
 
-        if (localStorage.getItem('cart') != null) {
-            let getStorage = JSON.parse(localStorage.getItem('cart'));
-            $(getStorage).each(function(index, item){
-                if(item.title == getProductName) {
-                    item.Qtt++ 
-                }
-            })
-
-            let sameFilter = getStorage.filter(it => it.title.includes(getProductName));
-            if (sameFilter.length == 0) {
-                getStorage.push(obj);
-            }
-
-            localStorage.setItem('cart', JSON.stringify(getStorage));
-        } else {
-            localStorage.setItem('cart',JSON.stringify([obj]));
-        }
-    })
-
-})
 // let removeSame = [...new Set(getStorage)];
 
   //배열에서 자료 찾아내기.

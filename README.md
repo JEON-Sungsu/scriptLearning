@@ -545,3 +545,7 @@ onclick="document.getElementById('id').style.display = 'block';" 이런식으로
             첫번째 조건문. cart로 저장된 데이터가 빈값이 아니면(데이터가 있으면)~ 블라블라
             두번째 cart로 저장된 데이터가 없으면 추가해줘~
             ```
+<br><br>
+
+- 일반 function 은 document.ready 밖에 존재해야한다.
+    - 한번실행하고 말게 아니라 지속적으로 사용할 것이니깐..!
