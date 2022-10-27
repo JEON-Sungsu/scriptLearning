@@ -122,7 +122,7 @@ function saveLocal(btn){
         if (el == name) {
             console.log('찾음');
         }
-    })
+    })  
 
 //    for(let i = 0; i < arr.length; i++) {
 //         console.log(arr[i]);

@@ -133,3 +133,21 @@ ul.list::after {
 .show {
     display: block;
 }
+
+.scrollUiWrap {
+    height: 3000px;
+    margin-top: 800px;
+    margin-bottom: 1600px;
+}
+
+.scrollUiWrap .card-box {
+    position: sticky;
+    top: 400px;
+    margin-top: 200px;
+}
+
+.scrollUiWrap .card-box img {
+    display: block;
+    margin: 0 auto;
+    max-width: 80%;
+}
