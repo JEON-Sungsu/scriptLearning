@@ -183,6 +183,33 @@ $('.prev').on('click',function(){
     $('.slide-container').css('transform','translateX(-'+ currentPicture +'00vw)')
 })
 
+
+let startX = 0;
+let clicked = false;
+$('.slide-box').eq(0).on('mousedown', function(e){
+    startX = e.clientX
+    clicked = true;
+})
+
+
+$('body').eq(0).on('mouseup', function(e){
+    clicked = false;
+    let endX = e.clientX - startX;
+    if (endX <= -100) {
+        $('.slide-container').css('transform',`translateX(-100vw)`)
+    } else {
+        $('.slide-container').css('transform',`translateX(0vw)`)
+    }
+})
+
+$('.slide-box').eq(0).on('mousemove', function(e){
+    let endX = e.clientX - startX;
+    if(clicked == true){
+        console.log(endX)
+        $('.slide-container').css('transform',`translateX(${endX}px)`)
+    } 
+})
+
 //분초 -> MS단위 변환기
 function translation(min, sec) {
     const minute = min * 60
@@ -249,4 +276,19 @@ $('.black-bg').on('click',function(e){
     // }
 
     $(this).fadeOut();
+})
+
+
+$('.simpleSwitch').on('click',function(e){
+    switch($(e.target).text()) {
+        case '강아지':
+            alert('강아지를 좋아하시네요');
+            break
+        case '부모님':
+            alert('부모님을 좋아하시네요');
+            break
+        case '와이프':
+            alert('와이프를 좋아하시네요');
+            break
+    }
 })

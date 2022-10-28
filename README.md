@@ -573,3 +573,51 @@ onclick="document.getElementById('id').style.display = 'block';" 이런식으로
     a 에는 시작지점에 넣고싶은값
     b 에는 종료지점에 넣고싶은 값을 넣어주면 되는것이다. 
     ```
+
+<br><br>
+
+- mousedown, mouseup, mousemove 이벤트
+    - mousedown : 마우스를 클릭했을때(눌렀을때) 발생하는 이벤트
+    - mouseup : 마우스를 클릭하고 손을땔따(마우스 버튼이 올라올때) 발생하는 이벤트
+    - mousemove : 마우스가 움직일때 발생하는 이벤트
+        - mousemove 이벤트에서 콜백함수에 e.clientX는 현재 마우스의 X좌표를 알려줌 Y는 당연히 Y좌표겠지.
+    - 모바일에서도 잘 동작하기 위해서는 touch 이벤트로 바꿔줘야한다.
+        - touchstart
+        - touchmove
+        - touchend 
+        - 터치이벤트에서 e.clientX 등의 좌표를 뽑아내려면 추가해야될게 있다. 아래와 같이 touches[0]를 넣어줘야 하는데, 이것은 터치할때 손가락이 여러개 닿을 수 있으니, 몇개나 닿는지를 넣어주는 함수이다.
+        ```
+        $('div').on('touchstart',function(e){
+            e.touches[0].clientX 
+        })
+
+        $('div').on('touchend',function(e){
+            e.changedTouches[0].clientX 
+        })
+
+        단 주의할 점은 touchend 는 touches 가 아니라 changedTouches 를 해야된다. 이유는 모름.
+        ```
+    - 터치와 마우스 이벤트 둘다 사용하려면... hammer.js 라이브러리를 쓰면 편하다고 한다.
+
+<br><br>
+
+- switch 문법
+    - if 문과 유사한 문법이다.
+    - if 와 차이점은, if문은 여러가지 등호들(and,or,등등)을 넣을 수 있지만, switch는 === 등호밖에 안들어간다. 변수의 값이 3이라면, 4라면, 5라면과 같이 일차원적으로밖에 못함.
+    - break 를 넣지않으면, switch에 들어있는 모든 함수가 다 동작하게됨.
+    ```
+    switch (변수) {
+        //변수에는 조건이 들어간다. 변수가 00이라면~
+        
+        case 3:
+            alert('변수가 3이네요');
+            break //switch문 실행을 중지시켜준다(return)
+        
+        case 4:
+            alert('변수가 4네요');
+            break
+        
+        default:
+            alert('위의 변수에 다 안걸리면 이거 실행해주세요. if 문의 else와 동일하네')
+    }
+    ```
