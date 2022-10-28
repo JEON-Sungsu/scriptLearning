@@ -621,3 +621,9 @@ onclick="document.getElementById('id').style.display = 'block';" 이런식으로
             alert('위의 변수에 다 안걸리면 이거 실행해주세요. if 문의 else와 동일하네')
     }
     ```
+
+<br><br>
+
+- 검색기능 구현 
+    - 실제로 검색기능을 구현할 때에는, ajax로 하진 않음. 왜냐하면 데이터가 수만개가 넘어가는데, ajax로 해버리면 검색할때마다 수만개를 다 불러와야 하기 때문. 따로 검색 API 가 존재할것이라고 함. 
+    - 
