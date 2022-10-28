@@ -23,7 +23,7 @@ $.ajax({
         }
     },
     error :function(){
-        alert('오류.');
+        alert('오류 발생요.');
     }
     
 });
