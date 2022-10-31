@@ -627,3 +627,47 @@ onclick="document.getElementById('id').style.display = 'block';" 이런식으로
 - 검색기능 구현 
     - 실제로 검색기능을 구현할 때에는, ajax로 하진 않음. 왜냐하면 데이터가 수만개가 넘어가는데, ajax로 해버리면 검색할때마다 수만개를 다 불러와야 하기 때문. 따로 검색 API 가 존재할것이라고 함. 
     - 
+
+<br><br>
+
+- concat 매소드
+    - 문자열 + 문자열을 합치거나 배열 + 배열을 합치는 매소드이다.
+    ```
+    var test1 = "Hello";
+    var test2 = "World";
+    var test3 = "!";
+    console.log(test1.concat(test2));
+    // result : HelloWorld
+    console.log(test1.concat(test2, test3));
+    // result : HelloWorld!
+
+    var test1 = [1, 2, 3];
+    var test2 = [4, 5, 6];
+    var test3 = ["a", "b", "c"];
+    console.log(test1.concat(test2));
+    // result : 1, 2, 3, 4, 5, 6
+    console.log(test2.concat(test3));
+    // result : 4, 5, 6, a, b, c
+    ```
+
+    - 주의할점은. 저렇게 합친다고 해서 원본 배열(메소드 체이닝을 붙이는 원본)이 변하거나 하는게 아니라서, 합쳐진 배열을 파라미터로 사용하려면, 그냥 
+    원본.concat(붙이고싶은배열); 이걸 통으로 매개변수에 넣어주면 된다. 
+
+<br><br>
+
+- empty() jquery 메소드 사용
+    - 기존의 내용을 다 지우고 새로 append 해야할때, $('선택자').empty().append(html); 이렇게 해줘도 된다.
+
+<br><br>
+
+- $.each문 사용법
+    ```
+    $.each(배열, 콜백함수)
+
+    $.each(list, function(){
+        html += `<span>${this.test1}</span>`
+    })
+
+    위처럼 html 그릴때 변수 넣는 부분에 this 는 forEach에서 콜백함수 첫번째 인자와 동일하다. 
+    ```
+
