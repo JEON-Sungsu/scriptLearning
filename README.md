@@ -671,3 +671,38 @@ onclick="document.getElementById('id').style.display = 'block';" 이런식으로
     위처럼 html 그릴때 변수 넣는 부분에 this 는 forEach에서 콜백함수 첫번째 인자와 동일하다. 
     ```
 
+<br><br>
+
+- drag & drop 
+    - 드래그를 할 요소에 draggable="true" 속성값을 넣어준다. 
+    - 드래그를 시작하면 dragstart 라는 이벤트가 발생한다.
+    - 드래그를 가져다 놓을곳에 드랍하면 drop 이벤트가 발생한다. 
+    - 드랍을 할 위치에는 dragover 이벤트를 붙여서 e.preventDafault() 를 넣어줘야 한다. 
+
+
+<br><br>
+
+- Ajax 사용할때
+    - 한번 ajax를 통해서 데이터를 불러오면, 추후 재사용을 하기 위해 데이터를 전역변수에 옮겨두고 계속 사용하는게 좋다. 
+    검색기능 구현할때, 계속 ajax문 안에 두지 안흔것처럼 계속해서 데이터를 불러올필요 없으니깐 데이터 불러왔을 때 그리는 부분만 ajax문 안에 넣고, 불러온 데이터를 가지고 다른 무언가를 할때는 바깥으로 빼는게 좋음.
+
+<br><br>
+
+- find, findIndex 함수 
+    - findIndex 함수 
+        - 배열을 검색해, 조건에 맞는 값이 있는지 확인한 후 맞는 값이 있으면 해당 값의 index를 반환하고, 없으면 -1 을 반환함.
+        ```
+        arr = [1,2,3,4,5]
+
+        let lookFor = arr.findIndex(function(element,index,arr){
+            return element == 3 //요소를 돌면서 3이랑 동일한 값을 찾아라 -> 2를 반환해줌. 3의 인덱스 넘버
+        })
+        ```
+
+    - find 함수
+        - 배열 내부의 값을 검색해서, 그 값이 배열 내부에 존재하면 배열을 통째로 반환해준다.
+        ```
+        arr = [1,2,3,4]
+
+        let tOrF = arr.find((element,index,arr) => return element == 3) //arr 에 3이 있으면 arr을 통째로 반환해라
+        ```
